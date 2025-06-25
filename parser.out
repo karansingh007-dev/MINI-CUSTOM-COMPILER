@@ -1,0 +1,1054 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    EQUALS
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> statement_list
+Rule 2     statement_list -> statement_list statement
+Rule 3     statement_list -> statement
+Rule 4     statement -> SET ID AS expression SEMI
+Rule 5     statement -> DISPLAY expression SEMI
+Rule 6     statement -> IF expression LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+Rule 7     statement -> WHILE expression LBRACE statement_list RBRACE
+Rule 8     expression -> expression PLUS expression
+Rule 9     expression -> expression MINUS expression
+Rule 10    expression -> expression TIMES expression
+Rule 11    expression -> expression DIVIDE expression
+Rule 12    expression -> expression LT expression
+Rule 13    expression -> expression GT expression
+Rule 14    expression -> expression EQEQ expression
+Rule 15    expression -> expression NEQ expression
+Rule 16    expression -> NUMBER
+Rule 17    expression -> ID
+
+Terminals, with rules where they appear
+
+AS                   : 4
+DISPLAY              : 5
+DIVIDE               : 11
+ELSE                 : 6
+EQEQ                 : 14
+EQUALS               : 
+GT                   : 13
+ID                   : 4 17
+IF                   : 6
+LBRACE               : 6 6 7
+LT                   : 12
+MINUS                : 9
+NEQ                  : 15
+NUMBER               : 16
+PLUS                 : 8
+RBRACE               : 6 6 7
+SEMI                 : 4 5
+SET                  : 4
+TIMES                : 10
+WHILE                : 7
+error                : 
+
+Nonterminals, with rules where they appear
+
+expression           : 4 5 6 7 8 8 9 9 10 10 11 11 12 12 13 13 14 14 15 15
+program              : 0
+statement            : 2 3
+statement_list       : 1 2 6 6 7
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . statement_list
+    (2) statement_list -> . statement_list statement
+    (3) statement_list -> . statement
+    (4) statement -> . SET ID AS expression SEMI
+    (5) statement -> . DISPLAY expression SEMI
+    (6) statement -> . IF expression LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+    (7) statement -> . WHILE expression LBRACE statement_list RBRACE
+
+    SET             shift and go to state 4
+    DISPLAY         shift and go to state 5
+    IF              shift and go to state 6
+    WHILE           shift and go to state 7
+
+    program                        shift and go to state 1
+    statement_list                 shift and go to state 2
+    statement                      shift and go to state 3
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> statement_list .
+    (2) statement_list -> statement_list . statement
+    (4) statement -> . SET ID AS expression SEMI
+    (5) statement -> . DISPLAY expression SEMI
+    (6) statement -> . IF expression LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+    (7) statement -> . WHILE expression LBRACE statement_list RBRACE
+
+    $end            reduce using rule 1 (program -> statement_list .)
+    SET             shift and go to state 4
+    DISPLAY         shift and go to state 5
+    IF              shift and go to state 6
+    WHILE           shift and go to state 7
+
+    statement                      shift and go to state 8
+
+state 3
+
+    (3) statement_list -> statement .
+
+    SET             reduce using rule 3 (statement_list -> statement .)
+    DISPLAY         reduce using rule 3 (statement_list -> statement .)
+    IF              reduce using rule 3 (statement_list -> statement .)
+    WHILE           reduce using rule 3 (statement_list -> statement .)
+    $end            reduce using rule 3 (statement_list -> statement .)
+    RBRACE          reduce using rule 3 (statement_list -> statement .)
+
+
+state 4
+
+    (4) statement -> SET . ID AS expression SEMI
+
+    ID              shift and go to state 9
+
+
+state 5
+
+    (5) statement -> DISPLAY . expression SEMI
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . expression MINUS expression
+    (10) expression -> . expression TIMES expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression LT expression
+    (13) expression -> . expression GT expression
+    (14) expression -> . expression EQEQ expression
+    (15) expression -> . expression NEQ expression
+    (16) expression -> . NUMBER
+    (17) expression -> . ID
+
+    NUMBER          shift and go to state 11
+    ID              shift and go to state 12
+
+    expression                     shift and go to state 10
+
+state 6
+
+    (6) statement -> IF . expression LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . expression MINUS expression
+    (10) expression -> . expression TIMES expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression LT expression
+    (13) expression -> . expression GT expression
+    (14) expression -> . expression EQEQ expression
+    (15) expression -> . expression NEQ expression
+    (16) expression -> . NUMBER
+    (17) expression -> . ID
+
+    NUMBER          shift and go to state 11
+    ID              shift and go to state 12
+
+    expression                     shift and go to state 13
+
+state 7
+
+    (7) statement -> WHILE . expression LBRACE statement_list RBRACE
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . expression MINUS expression
+    (10) expression -> . expression TIMES expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression LT expression
+    (13) expression -> . expression GT expression
+    (14) expression -> . expression EQEQ expression
+    (15) expression -> . expression NEQ expression
+    (16) expression -> . NUMBER
+    (17) expression -> . ID
+
+    NUMBER          shift and go to state 11
+    ID              shift and go to state 12
+
+    expression                     shift and go to state 14
+
+state 8
+
+    (2) statement_list -> statement_list statement .
+
+    SET             reduce using rule 2 (statement_list -> statement_list statement .)
+    DISPLAY         reduce using rule 2 (statement_list -> statement_list statement .)
+    IF              reduce using rule 2 (statement_list -> statement_list statement .)
+    WHILE           reduce using rule 2 (statement_list -> statement_list statement .)
+    $end            reduce using rule 2 (statement_list -> statement_list statement .)
+    RBRACE          reduce using rule 2 (statement_list -> statement_list statement .)
+
+
+state 9
+
+    (4) statement -> SET ID . AS expression SEMI
+
+    AS              shift and go to state 15
+
+
+state 10
+
+    (5) statement -> DISPLAY expression . SEMI
+    (8) expression -> expression . PLUS expression
+    (9) expression -> expression . MINUS expression
+    (10) expression -> expression . TIMES expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . LT expression
+    (13) expression -> expression . GT expression
+    (14) expression -> expression . EQEQ expression
+    (15) expression -> expression . NEQ expression
+
+    SEMI            shift and go to state 16
+    PLUS            shift and go to state 17
+    MINUS           shift and go to state 18
+    TIMES           shift and go to state 19
+    DIVIDE          shift and go to state 20
+    LT              shift and go to state 21
+    GT              shift and go to state 22
+    EQEQ            shift and go to state 23
+    NEQ             shift and go to state 24
+
+
+state 11
+
+    (16) expression -> NUMBER .
+
+    SEMI            reduce using rule 16 (expression -> NUMBER .)
+    PLUS            reduce using rule 16 (expression -> NUMBER .)
+    MINUS           reduce using rule 16 (expression -> NUMBER .)
+    TIMES           reduce using rule 16 (expression -> NUMBER .)
+    DIVIDE          reduce using rule 16 (expression -> NUMBER .)
+    LT              reduce using rule 16 (expression -> NUMBER .)
+    GT              reduce using rule 16 (expression -> NUMBER .)
+    EQEQ            reduce using rule 16 (expression -> NUMBER .)
+    NEQ             reduce using rule 16 (expression -> NUMBER .)
+    LBRACE          reduce using rule 16 (expression -> NUMBER .)
+
+
+state 12
+
+    (17) expression -> ID .
+
+    SEMI            reduce using rule 17 (expression -> ID .)
+    PLUS            reduce using rule 17 (expression -> ID .)
+    MINUS           reduce using rule 17 (expression -> ID .)
+    TIMES           reduce using rule 17 (expression -> ID .)
+    DIVIDE          reduce using rule 17 (expression -> ID .)
+    LT              reduce using rule 17 (expression -> ID .)
+    GT              reduce using rule 17 (expression -> ID .)
+    EQEQ            reduce using rule 17 (expression -> ID .)
+    NEQ             reduce using rule 17 (expression -> ID .)
+    LBRACE          reduce using rule 17 (expression -> ID .)
+
+
+state 13
+
+    (6) statement -> IF expression . LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+    (8) expression -> expression . PLUS expression
+    (9) expression -> expression . MINUS expression
+    (10) expression -> expression . TIMES expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . LT expression
+    (13) expression -> expression . GT expression
+    (14) expression -> expression . EQEQ expression
+    (15) expression -> expression . NEQ expression
+
+    LBRACE          shift and go to state 25
+    PLUS            shift and go to state 17
+    MINUS           shift and go to state 18
+    TIMES           shift and go to state 19
+    DIVIDE          shift and go to state 20
+    LT              shift and go to state 21
+    GT              shift and go to state 22
+    EQEQ            shift and go to state 23
+    NEQ             shift and go to state 24
+
+
+state 14
+
+    (7) statement -> WHILE expression . LBRACE statement_list RBRACE
+    (8) expression -> expression . PLUS expression
+    (9) expression -> expression . MINUS expression
+    (10) expression -> expression . TIMES expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . LT expression
+    (13) expression -> expression . GT expression
+    (14) expression -> expression . EQEQ expression
+    (15) expression -> expression . NEQ expression
+
+    LBRACE          shift and go to state 26
+    PLUS            shift and go to state 17
+    MINUS           shift and go to state 18
+    TIMES           shift and go to state 19
+    DIVIDE          shift and go to state 20
+    LT              shift and go to state 21
+    GT              shift and go to state 22
+    EQEQ            shift and go to state 23
+    NEQ             shift and go to state 24
+
+
+state 15
+
+    (4) statement -> SET ID AS . expression SEMI
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . expression MINUS expression
+    (10) expression -> . expression TIMES expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression LT expression
+    (13) expression -> . expression GT expression
+    (14) expression -> . expression EQEQ expression
+    (15) expression -> . expression NEQ expression
+    (16) expression -> . NUMBER
+    (17) expression -> . ID
+
+    NUMBER          shift and go to state 11
+    ID              shift and go to state 12
+
+    expression                     shift and go to state 27
+
+state 16
+
+    (5) statement -> DISPLAY expression SEMI .
+
+    SET             reduce using rule 5 (statement -> DISPLAY expression SEMI .)
+    DISPLAY         reduce using rule 5 (statement -> DISPLAY expression SEMI .)
+    IF              reduce using rule 5 (statement -> DISPLAY expression SEMI .)
+    WHILE           reduce using rule 5 (statement -> DISPLAY expression SEMI .)
+    $end            reduce using rule 5 (statement -> DISPLAY expression SEMI .)
+    RBRACE          reduce using rule 5 (statement -> DISPLAY expression SEMI .)
+
+
+state 17
+
+    (8) expression -> expression PLUS . expression
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . expression MINUS expression
+    (10) expression -> . expression TIMES expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression LT expression
+    (13) expression -> . expression GT expression
+    (14) expression -> . expression EQEQ expression
+    (15) expression -> . expression NEQ expression
+    (16) expression -> . NUMBER
+    (17) expression -> . ID
+
+    NUMBER          shift and go to state 11
+    ID              shift and go to state 12
+
+    expression                     shift and go to state 28
+
+state 18
+
+    (9) expression -> expression MINUS . expression
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . expression MINUS expression
+    (10) expression -> . expression TIMES expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression LT expression
+    (13) expression -> . expression GT expression
+    (14) expression -> . expression EQEQ expression
+    (15) expression -> . expression NEQ expression
+    (16) expression -> . NUMBER
+    (17) expression -> . ID
+
+    NUMBER          shift and go to state 11
+    ID              shift and go to state 12
+
+    expression                     shift and go to state 29
+
+state 19
+
+    (10) expression -> expression TIMES . expression
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . expression MINUS expression
+    (10) expression -> . expression TIMES expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression LT expression
+    (13) expression -> . expression GT expression
+    (14) expression -> . expression EQEQ expression
+    (15) expression -> . expression NEQ expression
+    (16) expression -> . NUMBER
+    (17) expression -> . ID
+
+    NUMBER          shift and go to state 11
+    ID              shift and go to state 12
+
+    expression                     shift and go to state 30
+
+state 20
+
+    (11) expression -> expression DIVIDE . expression
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . expression MINUS expression
+    (10) expression -> . expression TIMES expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression LT expression
+    (13) expression -> . expression GT expression
+    (14) expression -> . expression EQEQ expression
+    (15) expression -> . expression NEQ expression
+    (16) expression -> . NUMBER
+    (17) expression -> . ID
+
+    NUMBER          shift and go to state 11
+    ID              shift and go to state 12
+
+    expression                     shift and go to state 31
+
+state 21
+
+    (12) expression -> expression LT . expression
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . expression MINUS expression
+    (10) expression -> . expression TIMES expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression LT expression
+    (13) expression -> . expression GT expression
+    (14) expression -> . expression EQEQ expression
+    (15) expression -> . expression NEQ expression
+    (16) expression -> . NUMBER
+    (17) expression -> . ID
+
+    NUMBER          shift and go to state 11
+    ID              shift and go to state 12
+
+    expression                     shift and go to state 32
+
+state 22
+
+    (13) expression -> expression GT . expression
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . expression MINUS expression
+    (10) expression -> . expression TIMES expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression LT expression
+    (13) expression -> . expression GT expression
+    (14) expression -> . expression EQEQ expression
+    (15) expression -> . expression NEQ expression
+    (16) expression -> . NUMBER
+    (17) expression -> . ID
+
+    NUMBER          shift and go to state 11
+    ID              shift and go to state 12
+
+    expression                     shift and go to state 33
+
+state 23
+
+    (14) expression -> expression EQEQ . expression
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . expression MINUS expression
+    (10) expression -> . expression TIMES expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression LT expression
+    (13) expression -> . expression GT expression
+    (14) expression -> . expression EQEQ expression
+    (15) expression -> . expression NEQ expression
+    (16) expression -> . NUMBER
+    (17) expression -> . ID
+
+    NUMBER          shift and go to state 11
+    ID              shift and go to state 12
+
+    expression                     shift and go to state 34
+
+state 24
+
+    (15) expression -> expression NEQ . expression
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . expression MINUS expression
+    (10) expression -> . expression TIMES expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression LT expression
+    (13) expression -> . expression GT expression
+    (14) expression -> . expression EQEQ expression
+    (15) expression -> . expression NEQ expression
+    (16) expression -> . NUMBER
+    (17) expression -> . ID
+
+    NUMBER          shift and go to state 11
+    ID              shift and go to state 12
+
+    expression                     shift and go to state 35
+
+state 25
+
+    (6) statement -> IF expression LBRACE . statement_list RBRACE ELSE LBRACE statement_list RBRACE
+    (2) statement_list -> . statement_list statement
+    (3) statement_list -> . statement
+    (4) statement -> . SET ID AS expression SEMI
+    (5) statement -> . DISPLAY expression SEMI
+    (6) statement -> . IF expression LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+    (7) statement -> . WHILE expression LBRACE statement_list RBRACE
+
+    SET             shift and go to state 4
+    DISPLAY         shift and go to state 5
+    IF              shift and go to state 6
+    WHILE           shift and go to state 7
+
+    statement_list                 shift and go to state 36
+    statement                      shift and go to state 3
+
+state 26
+
+    (7) statement -> WHILE expression LBRACE . statement_list RBRACE
+    (2) statement_list -> . statement_list statement
+    (3) statement_list -> . statement
+    (4) statement -> . SET ID AS expression SEMI
+    (5) statement -> . DISPLAY expression SEMI
+    (6) statement -> . IF expression LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+    (7) statement -> . WHILE expression LBRACE statement_list RBRACE
+
+    SET             shift and go to state 4
+    DISPLAY         shift and go to state 5
+    IF              shift and go to state 6
+    WHILE           shift and go to state 7
+
+    statement_list                 shift and go to state 37
+    statement                      shift and go to state 3
+
+state 27
+
+    (4) statement -> SET ID AS expression . SEMI
+    (8) expression -> expression . PLUS expression
+    (9) expression -> expression . MINUS expression
+    (10) expression -> expression . TIMES expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . LT expression
+    (13) expression -> expression . GT expression
+    (14) expression -> expression . EQEQ expression
+    (15) expression -> expression . NEQ expression
+
+    SEMI            shift and go to state 38
+    PLUS            shift and go to state 17
+    MINUS           shift and go to state 18
+    TIMES           shift and go to state 19
+    DIVIDE          shift and go to state 20
+    LT              shift and go to state 21
+    GT              shift and go to state 22
+    EQEQ            shift and go to state 23
+    NEQ             shift and go to state 24
+
+
+state 28
+
+    (8) expression -> expression PLUS expression .
+    (8) expression -> expression . PLUS expression
+    (9) expression -> expression . MINUS expression
+    (10) expression -> expression . TIMES expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . LT expression
+    (13) expression -> expression . GT expression
+    (14) expression -> expression . EQEQ expression
+    (15) expression -> expression . NEQ expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for GT resolved as shift
+  ! shift/reduce conflict for EQEQ resolved as shift
+  ! shift/reduce conflict for NEQ resolved as shift
+    SEMI            reduce using rule 8 (expression -> expression PLUS expression .)
+    LBRACE          reduce using rule 8 (expression -> expression PLUS expression .)
+    PLUS            shift and go to state 17
+    MINUS           shift and go to state 18
+    TIMES           shift and go to state 19
+    DIVIDE          shift and go to state 20
+    LT              shift and go to state 21
+    GT              shift and go to state 22
+    EQEQ            shift and go to state 23
+    NEQ             shift and go to state 24
+
+  ! PLUS            [ reduce using rule 8 (expression -> expression PLUS expression .) ]
+  ! MINUS           [ reduce using rule 8 (expression -> expression PLUS expression .) ]
+  ! TIMES           [ reduce using rule 8 (expression -> expression PLUS expression .) ]
+  ! DIVIDE          [ reduce using rule 8 (expression -> expression PLUS expression .) ]
+  ! LT              [ reduce using rule 8 (expression -> expression PLUS expression .) ]
+  ! GT              [ reduce using rule 8 (expression -> expression PLUS expression .) ]
+  ! EQEQ            [ reduce using rule 8 (expression -> expression PLUS expression .) ]
+  ! NEQ             [ reduce using rule 8 (expression -> expression PLUS expression .) ]
+
+
+state 29
+
+    (9) expression -> expression MINUS expression .
+    (8) expression -> expression . PLUS expression
+    (9) expression -> expression . MINUS expression
+    (10) expression -> expression . TIMES expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . LT expression
+    (13) expression -> expression . GT expression
+    (14) expression -> expression . EQEQ expression
+    (15) expression -> expression . NEQ expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for GT resolved as shift
+  ! shift/reduce conflict for EQEQ resolved as shift
+  ! shift/reduce conflict for NEQ resolved as shift
+    SEMI            reduce using rule 9 (expression -> expression MINUS expression .)
+    LBRACE          reduce using rule 9 (expression -> expression MINUS expression .)
+    PLUS            shift and go to state 17
+    MINUS           shift and go to state 18
+    TIMES           shift and go to state 19
+    DIVIDE          shift and go to state 20
+    LT              shift and go to state 21
+    GT              shift and go to state 22
+    EQEQ            shift and go to state 23
+    NEQ             shift and go to state 24
+
+  ! PLUS            [ reduce using rule 9 (expression -> expression MINUS expression .) ]
+  ! MINUS           [ reduce using rule 9 (expression -> expression MINUS expression .) ]
+  ! TIMES           [ reduce using rule 9 (expression -> expression MINUS expression .) ]
+  ! DIVIDE          [ reduce using rule 9 (expression -> expression MINUS expression .) ]
+  ! LT              [ reduce using rule 9 (expression -> expression MINUS expression .) ]
+  ! GT              [ reduce using rule 9 (expression -> expression MINUS expression .) ]
+  ! EQEQ            [ reduce using rule 9 (expression -> expression MINUS expression .) ]
+  ! NEQ             [ reduce using rule 9 (expression -> expression MINUS expression .) ]
+
+
+state 30
+
+    (10) expression -> expression TIMES expression .
+    (8) expression -> expression . PLUS expression
+    (9) expression -> expression . MINUS expression
+    (10) expression -> expression . TIMES expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . LT expression
+    (13) expression -> expression . GT expression
+    (14) expression -> expression . EQEQ expression
+    (15) expression -> expression . NEQ expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for GT resolved as shift
+  ! shift/reduce conflict for EQEQ resolved as shift
+  ! shift/reduce conflict for NEQ resolved as shift
+    SEMI            reduce using rule 10 (expression -> expression TIMES expression .)
+    LBRACE          reduce using rule 10 (expression -> expression TIMES expression .)
+    PLUS            shift and go to state 17
+    MINUS           shift and go to state 18
+    TIMES           shift and go to state 19
+    DIVIDE          shift and go to state 20
+    LT              shift and go to state 21
+    GT              shift and go to state 22
+    EQEQ            shift and go to state 23
+    NEQ             shift and go to state 24
+
+  ! PLUS            [ reduce using rule 10 (expression -> expression TIMES expression .) ]
+  ! MINUS           [ reduce using rule 10 (expression -> expression TIMES expression .) ]
+  ! TIMES           [ reduce using rule 10 (expression -> expression TIMES expression .) ]
+  ! DIVIDE          [ reduce using rule 10 (expression -> expression TIMES expression .) ]
+  ! LT              [ reduce using rule 10 (expression -> expression TIMES expression .) ]
+  ! GT              [ reduce using rule 10 (expression -> expression TIMES expression .) ]
+  ! EQEQ            [ reduce using rule 10 (expression -> expression TIMES expression .) ]
+  ! NEQ             [ reduce using rule 10 (expression -> expression TIMES expression .) ]
+
+
+state 31
+
+    (11) expression -> expression DIVIDE expression .
+    (8) expression -> expression . PLUS expression
+    (9) expression -> expression . MINUS expression
+    (10) expression -> expression . TIMES expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . LT expression
+    (13) expression -> expression . GT expression
+    (14) expression -> expression . EQEQ expression
+    (15) expression -> expression . NEQ expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for GT resolved as shift
+  ! shift/reduce conflict for EQEQ resolved as shift
+  ! shift/reduce conflict for NEQ resolved as shift
+    SEMI            reduce using rule 11 (expression -> expression DIVIDE expression .)
+    LBRACE          reduce using rule 11 (expression -> expression DIVIDE expression .)
+    PLUS            shift and go to state 17
+    MINUS           shift and go to state 18
+    TIMES           shift and go to state 19
+    DIVIDE          shift and go to state 20
+    LT              shift and go to state 21
+    GT              shift and go to state 22
+    EQEQ            shift and go to state 23
+    NEQ             shift and go to state 24
+
+  ! PLUS            [ reduce using rule 11 (expression -> expression DIVIDE expression .) ]
+  ! MINUS           [ reduce using rule 11 (expression -> expression DIVIDE expression .) ]
+  ! TIMES           [ reduce using rule 11 (expression -> expression DIVIDE expression .) ]
+  ! DIVIDE          [ reduce using rule 11 (expression -> expression DIVIDE expression .) ]
+  ! LT              [ reduce using rule 11 (expression -> expression DIVIDE expression .) ]
+  ! GT              [ reduce using rule 11 (expression -> expression DIVIDE expression .) ]
+  ! EQEQ            [ reduce using rule 11 (expression -> expression DIVIDE expression .) ]
+  ! NEQ             [ reduce using rule 11 (expression -> expression DIVIDE expression .) ]
+
+
+state 32
+
+    (12) expression -> expression LT expression .
+    (8) expression -> expression . PLUS expression
+    (9) expression -> expression . MINUS expression
+    (10) expression -> expression . TIMES expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . LT expression
+    (13) expression -> expression . GT expression
+    (14) expression -> expression . EQEQ expression
+    (15) expression -> expression . NEQ expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for GT resolved as shift
+  ! shift/reduce conflict for EQEQ resolved as shift
+  ! shift/reduce conflict for NEQ resolved as shift
+    SEMI            reduce using rule 12 (expression -> expression LT expression .)
+    LBRACE          reduce using rule 12 (expression -> expression LT expression .)
+    PLUS            shift and go to state 17
+    MINUS           shift and go to state 18
+    TIMES           shift and go to state 19
+    DIVIDE          shift and go to state 20
+    LT              shift and go to state 21
+    GT              shift and go to state 22
+    EQEQ            shift and go to state 23
+    NEQ             shift and go to state 24
+
+  ! PLUS            [ reduce using rule 12 (expression -> expression LT expression .) ]
+  ! MINUS           [ reduce using rule 12 (expression -> expression LT expression .) ]
+  ! TIMES           [ reduce using rule 12 (expression -> expression LT expression .) ]
+  ! DIVIDE          [ reduce using rule 12 (expression -> expression LT expression .) ]
+  ! LT              [ reduce using rule 12 (expression -> expression LT expression .) ]
+  ! GT              [ reduce using rule 12 (expression -> expression LT expression .) ]
+  ! EQEQ            [ reduce using rule 12 (expression -> expression LT expression .) ]
+  ! NEQ             [ reduce using rule 12 (expression -> expression LT expression .) ]
+
+
+state 33
+
+    (13) expression -> expression GT expression .
+    (8) expression -> expression . PLUS expression
+    (9) expression -> expression . MINUS expression
+    (10) expression -> expression . TIMES expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . LT expression
+    (13) expression -> expression . GT expression
+    (14) expression -> expression . EQEQ expression
+    (15) expression -> expression . NEQ expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for GT resolved as shift
+  ! shift/reduce conflict for EQEQ resolved as shift
+  ! shift/reduce conflict for NEQ resolved as shift
+    SEMI            reduce using rule 13 (expression -> expression GT expression .)
+    LBRACE          reduce using rule 13 (expression -> expression GT expression .)
+    PLUS            shift and go to state 17
+    MINUS           shift and go to state 18
+    TIMES           shift and go to state 19
+    DIVIDE          shift and go to state 20
+    LT              shift and go to state 21
+    GT              shift and go to state 22
+    EQEQ            shift and go to state 23
+    NEQ             shift and go to state 24
+
+  ! PLUS            [ reduce using rule 13 (expression -> expression GT expression .) ]
+  ! MINUS           [ reduce using rule 13 (expression -> expression GT expression .) ]
+  ! TIMES           [ reduce using rule 13 (expression -> expression GT expression .) ]
+  ! DIVIDE          [ reduce using rule 13 (expression -> expression GT expression .) ]
+  ! LT              [ reduce using rule 13 (expression -> expression GT expression .) ]
+  ! GT              [ reduce using rule 13 (expression -> expression GT expression .) ]
+  ! EQEQ            [ reduce using rule 13 (expression -> expression GT expression .) ]
+  ! NEQ             [ reduce using rule 13 (expression -> expression GT expression .) ]
+
+
+state 34
+
+    (14) expression -> expression EQEQ expression .
+    (8) expression -> expression . PLUS expression
+    (9) expression -> expression . MINUS expression
+    (10) expression -> expression . TIMES expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . LT expression
+    (13) expression -> expression . GT expression
+    (14) expression -> expression . EQEQ expression
+    (15) expression -> expression . NEQ expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for GT resolved as shift
+  ! shift/reduce conflict for EQEQ resolved as shift
+  ! shift/reduce conflict for NEQ resolved as shift
+    SEMI            reduce using rule 14 (expression -> expression EQEQ expression .)
+    LBRACE          reduce using rule 14 (expression -> expression EQEQ expression .)
+    PLUS            shift and go to state 17
+    MINUS           shift and go to state 18
+    TIMES           shift and go to state 19
+    DIVIDE          shift and go to state 20
+    LT              shift and go to state 21
+    GT              shift and go to state 22
+    EQEQ            shift and go to state 23
+    NEQ             shift and go to state 24
+
+  ! PLUS            [ reduce using rule 14 (expression -> expression EQEQ expression .) ]
+  ! MINUS           [ reduce using rule 14 (expression -> expression EQEQ expression .) ]
+  ! TIMES           [ reduce using rule 14 (expression -> expression EQEQ expression .) ]
+  ! DIVIDE          [ reduce using rule 14 (expression -> expression EQEQ expression .) ]
+  ! LT              [ reduce using rule 14 (expression -> expression EQEQ expression .) ]
+  ! GT              [ reduce using rule 14 (expression -> expression EQEQ expression .) ]
+  ! EQEQ            [ reduce using rule 14 (expression -> expression EQEQ expression .) ]
+  ! NEQ             [ reduce using rule 14 (expression -> expression EQEQ expression .) ]
+
+
+state 35
+
+    (15) expression -> expression NEQ expression .
+    (8) expression -> expression . PLUS expression
+    (9) expression -> expression . MINUS expression
+    (10) expression -> expression . TIMES expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . LT expression
+    (13) expression -> expression . GT expression
+    (14) expression -> expression . EQEQ expression
+    (15) expression -> expression . NEQ expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for GT resolved as shift
+  ! shift/reduce conflict for EQEQ resolved as shift
+  ! shift/reduce conflict for NEQ resolved as shift
+    SEMI            reduce using rule 15 (expression -> expression NEQ expression .)
+    LBRACE          reduce using rule 15 (expression -> expression NEQ expression .)
+    PLUS            shift and go to state 17
+    MINUS           shift and go to state 18
+    TIMES           shift and go to state 19
+    DIVIDE          shift and go to state 20
+    LT              shift and go to state 21
+    GT              shift and go to state 22
+    EQEQ            shift and go to state 23
+    NEQ             shift and go to state 24
+
+  ! PLUS            [ reduce using rule 15 (expression -> expression NEQ expression .) ]
+  ! MINUS           [ reduce using rule 15 (expression -> expression NEQ expression .) ]
+  ! TIMES           [ reduce using rule 15 (expression -> expression NEQ expression .) ]
+  ! DIVIDE          [ reduce using rule 15 (expression -> expression NEQ expression .) ]
+  ! LT              [ reduce using rule 15 (expression -> expression NEQ expression .) ]
+  ! GT              [ reduce using rule 15 (expression -> expression NEQ expression .) ]
+  ! EQEQ            [ reduce using rule 15 (expression -> expression NEQ expression .) ]
+  ! NEQ             [ reduce using rule 15 (expression -> expression NEQ expression .) ]
+
+
+state 36
+
+    (6) statement -> IF expression LBRACE statement_list . RBRACE ELSE LBRACE statement_list RBRACE
+    (2) statement_list -> statement_list . statement
+    (4) statement -> . SET ID AS expression SEMI
+    (5) statement -> . DISPLAY expression SEMI
+    (6) statement -> . IF expression LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+    (7) statement -> . WHILE expression LBRACE statement_list RBRACE
+
+    RBRACE          shift and go to state 39
+    SET             shift and go to state 4
+    DISPLAY         shift and go to state 5
+    IF              shift and go to state 6
+    WHILE           shift and go to state 7
+
+    statement                      shift and go to state 8
+
+state 37
+
+    (7) statement -> WHILE expression LBRACE statement_list . RBRACE
+    (2) statement_list -> statement_list . statement
+    (4) statement -> . SET ID AS expression SEMI
+    (5) statement -> . DISPLAY expression SEMI
+    (6) statement -> . IF expression LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+    (7) statement -> . WHILE expression LBRACE statement_list RBRACE
+
+    RBRACE          shift and go to state 40
+    SET             shift and go to state 4
+    DISPLAY         shift and go to state 5
+    IF              shift and go to state 6
+    WHILE           shift and go to state 7
+
+    statement                      shift and go to state 8
+
+state 38
+
+    (4) statement -> SET ID AS expression SEMI .
+
+    SET             reduce using rule 4 (statement -> SET ID AS expression SEMI .)
+    DISPLAY         reduce using rule 4 (statement -> SET ID AS expression SEMI .)
+    IF              reduce using rule 4 (statement -> SET ID AS expression SEMI .)
+    WHILE           reduce using rule 4 (statement -> SET ID AS expression SEMI .)
+    $end            reduce using rule 4 (statement -> SET ID AS expression SEMI .)
+    RBRACE          reduce using rule 4 (statement -> SET ID AS expression SEMI .)
+
+
+state 39
+
+    (6) statement -> IF expression LBRACE statement_list RBRACE . ELSE LBRACE statement_list RBRACE
+
+    ELSE            shift and go to state 41
+
+
+state 40
+
+    (7) statement -> WHILE expression LBRACE statement_list RBRACE .
+
+    SET             reduce using rule 7 (statement -> WHILE expression LBRACE statement_list RBRACE .)
+    DISPLAY         reduce using rule 7 (statement -> WHILE expression LBRACE statement_list RBRACE .)
+    IF              reduce using rule 7 (statement -> WHILE expression LBRACE statement_list RBRACE .)
+    WHILE           reduce using rule 7 (statement -> WHILE expression LBRACE statement_list RBRACE .)
+    $end            reduce using rule 7 (statement -> WHILE expression LBRACE statement_list RBRACE .)
+    RBRACE          reduce using rule 7 (statement -> WHILE expression LBRACE statement_list RBRACE .)
+
+
+state 41
+
+    (6) statement -> IF expression LBRACE statement_list RBRACE ELSE . LBRACE statement_list RBRACE
+
+    LBRACE          shift and go to state 42
+
+
+state 42
+
+    (6) statement -> IF expression LBRACE statement_list RBRACE ELSE LBRACE . statement_list RBRACE
+    (2) statement_list -> . statement_list statement
+    (3) statement_list -> . statement
+    (4) statement -> . SET ID AS expression SEMI
+    (5) statement -> . DISPLAY expression SEMI
+    (6) statement -> . IF expression LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+    (7) statement -> . WHILE expression LBRACE statement_list RBRACE
+
+    SET             shift and go to state 4
+    DISPLAY         shift and go to state 5
+    IF              shift and go to state 6
+    WHILE           shift and go to state 7
+
+    statement_list                 shift and go to state 43
+    statement                      shift and go to state 3
+
+state 43
+
+    (6) statement -> IF expression LBRACE statement_list RBRACE ELSE LBRACE statement_list . RBRACE
+    (2) statement_list -> statement_list . statement
+    (4) statement -> . SET ID AS expression SEMI
+    (5) statement -> . DISPLAY expression SEMI
+    (6) statement -> . IF expression LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+    (7) statement -> . WHILE expression LBRACE statement_list RBRACE
+
+    RBRACE          shift and go to state 44
+    SET             shift and go to state 4
+    DISPLAY         shift and go to state 5
+    IF              shift and go to state 6
+    WHILE           shift and go to state 7
+
+    statement                      shift and go to state 8
+
+state 44
+
+    (6) statement -> IF expression LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE .
+
+    SET             reduce using rule 6 (statement -> IF expression LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE .)
+    DISPLAY         reduce using rule 6 (statement -> IF expression LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE .)
+    IF              reduce using rule 6 (statement -> IF expression LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE .)
+    WHILE           reduce using rule 6 (statement -> IF expression LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE .)
+    $end            reduce using rule 6 (statement -> IF expression LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE .)
+    RBRACE          reduce using rule 6 (statement -> IF expression LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for PLUS in state 28 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 28 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 28 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 28 resolved as shift
+WARNING: shift/reduce conflict for LT in state 28 resolved as shift
+WARNING: shift/reduce conflict for GT in state 28 resolved as shift
+WARNING: shift/reduce conflict for EQEQ in state 28 resolved as shift
+WARNING: shift/reduce conflict for NEQ in state 28 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 29 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 29 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 29 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 29 resolved as shift
+WARNING: shift/reduce conflict for LT in state 29 resolved as shift
+WARNING: shift/reduce conflict for GT in state 29 resolved as shift
+WARNING: shift/reduce conflict for EQEQ in state 29 resolved as shift
+WARNING: shift/reduce conflict for NEQ in state 29 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 30 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 30 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 30 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 30 resolved as shift
+WARNING: shift/reduce conflict for LT in state 30 resolved as shift
+WARNING: shift/reduce conflict for GT in state 30 resolved as shift
+WARNING: shift/reduce conflict for EQEQ in state 30 resolved as shift
+WARNING: shift/reduce conflict for NEQ in state 30 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 31 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 31 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 31 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 31 resolved as shift
+WARNING: shift/reduce conflict for LT in state 31 resolved as shift
+WARNING: shift/reduce conflict for GT in state 31 resolved as shift
+WARNING: shift/reduce conflict for EQEQ in state 31 resolved as shift
+WARNING: shift/reduce conflict for NEQ in state 31 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 32 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 32 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 32 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 32 resolved as shift
+WARNING: shift/reduce conflict for LT in state 32 resolved as shift
+WARNING: shift/reduce conflict for GT in state 32 resolved as shift
+WARNING: shift/reduce conflict for EQEQ in state 32 resolved as shift
+WARNING: shift/reduce conflict for NEQ in state 32 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 33 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 33 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 33 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 33 resolved as shift
+WARNING: shift/reduce conflict for LT in state 33 resolved as shift
+WARNING: shift/reduce conflict for GT in state 33 resolved as shift
+WARNING: shift/reduce conflict for EQEQ in state 33 resolved as shift
+WARNING: shift/reduce conflict for NEQ in state 33 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 34 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 34 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 34 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 34 resolved as shift
+WARNING: shift/reduce conflict for LT in state 34 resolved as shift
+WARNING: shift/reduce conflict for GT in state 34 resolved as shift
+WARNING: shift/reduce conflict for EQEQ in state 34 resolved as shift
+WARNING: shift/reduce conflict for NEQ in state 34 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 35 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 35 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 35 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 35 resolved as shift
+WARNING: shift/reduce conflict for LT in state 35 resolved as shift
+WARNING: shift/reduce conflict for GT in state 35 resolved as shift
+WARNING: shift/reduce conflict for EQEQ in state 35 resolved as shift
+WARNING: shift/reduce conflict for NEQ in state 35 resolved as shift

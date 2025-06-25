@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mini Compiler</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #1e1e1e;
+            color: #ccc;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: #252526;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+        }
+
+        h2 {
+            color: #61dafb;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .editor {
+            display: grid;
+            grid-template-columns: 40px 1fr;
+            background: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 6px;
+            overflow: hidden;
+            height: 300px;
+            resize: vertical;
+        }
+
+        .lines {
+            background-color: #2d2d2d;
+            color: #888;
+            text-align: right;
+            padding: 10px 5px;
+            font-size: 14px;
+            line-height: 20px;
+            user-select: none;
+        }
+
+        textarea {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            border: none;
+            font-size: 14px;
+            padding: 10px;
+            font-family: 'Courier New', monospace;
+            line-height: 20px;
+            height: 100%;
+            width: 100%;
+            resize: none;
+            overflow: auto;
+            outline: none;
+        }
+
+        .btn-run {
+            margin-top: 15px;
+            padding: 12px 25px;
+            font-size: 16px;
+            background-color: #007acc;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-run:hover {
+            background-color: #005f99;
+        }
+
+        #output {
+            margin-top: 20px;
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+            padding: 15px;
+            border-radius: 6px;
+            min-height: 100px;
+            font-family: monospace;
+            color: #a6e22e;
+            white-space: pre-wrap;
+            overflow-y: auto;
+            max-height: 200px;
+        }
+
+        .loader {
+            animation: blink 1s infinite alternate;
+        }
+
+        @keyframes blink {
+            0% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+
+        @media (max-width: 600px) {
+            .editor {
+                grid-template-columns: 30px 1fr;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>?? Mini Compiler IDE</h2>
+        <div class="editor">
+            <div class="lines" id="line-numbers">1</div>
+            <textarea id="code" spellcheck="false" placeholder="// Type your code here..."></textarea>
+        </div>
+        <button class="btn-run" onclick="runCode()">Run Code (Ctrl+Enter)</button>
+        <div id="output">Output will appear here...</div>
+    </div>
+
+    <script>
+        const textarea = document.getElementById("code");
+        const lineNumbers = document.getElementById("line-numbers");
+
+        // Update line numbers dynamically
+        textarea.addEventListener("input", () => {
+            const lines = textarea.value.split("\n").length;
+            lineNumbers.innerHTML = Array.from({length: lines}, (_, i) => i + 1).join("<br>");
+        });
+
+        // Auto-run with Ctrl + Enter
+        textarea.addEventListener("keydown", function (e) {
+            if (e.ctrlKey && e.key === "Enter") {
+                runCode();
+            }
+        });
+
+        function runCode() {
+            const code = textarea.value;
+            const outputDiv = document.getElementById("output");
+            outputDiv.innerHTML = "<span class='loader'>? Running code...</span>";
+
+            fetch('/run', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ code: code })
+            })
+            .then(res => res.json())
+            .then(data => {
+                outputDiv.innerText = data.output || "? Code ran, but no output.";
+            })
+            .catch(err => {
+                console.error(err);
+                outputDiv.innerText = "? Error occurred.";
+            });
+        }
+    </script>
+</body>
+</html>
